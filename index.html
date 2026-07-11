@@ -37,6 +37,18 @@ p { font-size: 2em; color: #660033; margin-bottom: 15px; }
 .main-content p { font-size: 1.6em; line-height: 1.9; color: #660044; font-family: 'Playfair Display', serif; }
 .question-text { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.8em; color: #660033; margin-top: 30px; }
 .angry-text { font-family: 'Playfair Display', serif; font-size: 2.5em; color: #cc0000; font-weight: 700; font-style: italic; }
+.pass-box { width: 60px; height: 70px; border: 3px solid #cc0066; border-radius: 12px; font-size: 2em; text-align: center; line-height: 70px; margin: 0 8px; display: inline-block; background: rgba(255,255,255,0.4); color: #660033; font-family: 'Playfair Display', serif; }
+.numpad { display: grid; grid-template-columns: repeat(3, 80px); gap: 12px; justify-content: center; margin-top: 25px; }
+.num-key { width: 80px; height: 80px; border: none; border-radius: 50%; font-size: 2em; font-family: 'Playfair Display', serif; background: linear-gradient(145deg, #ffb6d9, #ff8cbc); color: #fff; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.15); transition: all 0.15s; font-weight: bold; }
+.num-key:active { transform: scale(0.92); box-shadow: 0 2px 6px rgba(0,0,0,0.2); }
+.num-key-zero { grid-column: 2; }
+.num-key-clear { background: linear-gradient(145deg, #ff8a8a, #ff5c5c); }
+.hint-link { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.3em; color: #990055; cursor: pointer; margin-top: 20px; text-decoration: underline dotted; }
+.hint-link:hover { color: #cc0066; text-shadow: 0 0 10px rgba(255,105,180,0.4); }
+.letter-box { background: #fdf5e6; max-width: 650px; padding: 50px 40px; border-radius: 8px; box-shadow: 0 8px 30px rgba(0,0,0,0.15), inset 0 0 0 1px rgba(139,90,43,0.1); position: relative; font-family: 'Dancing Script', cursive; border: 1px solid #d4b896; }
+.letter-box::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E"); pointer-events: none; border-radius: 8px; }
+.letter-text { font-size: 2.2em; color: #5a3a1a; line-height: 1.6; position: relative; z-index: 1; letter-spacing: 1px; }
+.lock-status { font-family: 'Playfair Display', serif; font-size: 1em; color: #cc0066; margin-top: 10px; min-height: 30px; }
 </style>
 </head>
 <body>
@@ -72,18 +84,47 @@ p { font-size: 2em; color: #660033; margin-bottom: 15px; }
 
 <div id="messagePage" class="page">
   <div class="content fade-in">
-    <p style="font-size:2.5em;color:#cc0066;">ohh.. You really want to see</p>
+    <p style="font-size:2.5em;color:#cc0066;"><span class="emoji-4d">😳</span> ohh.. You really want to see <span class="emoji-4d">🥺</span><span class="emoji-4d">💕</span></p>
   </div>
 </div>
 
-<div id="mainPage" class="page">
-  <div class="main-content fade-in">
-    <h1><span class="emoji-4d">✨</span> Happy Birthday Didi! <span class="emoji-4d">✨</span></h1>
-    <p><span class="emoji-4d">🌸</span> On this special day, I just want to say how much you mean to me. You're the best sister anyone could ask for! <span class="emoji-4d">🌸</span></p>
-    <p><span class="emoji-4d">💖</span> May your day be filled with as much joy and happiness as you bring to everyone around you. <span class="emoji-4d">💖</span></p>
-    <p><span class="emoji-4d">🎂</span> Wishing you all the love, laughter, and success in the world. You deserve it all and more! <span class="emoji-4d">🎂</span></p>
-    <p><span class="emoji-4d">💫</span> Stay blessed, stay beautiful, and never stop shining! <span class="emoji-4d">💫</span></p>
-    <p style="margin-top:30px;color:#cc0066;font-size:1.8em;">Love you always! <span class="emoji-4d">❤️</span></p>
+<div id="lockPage" class="page">
+  <div class="content fade-in">
+    <p style="font-size:1.8em;color:#660033;margin-bottom:10px;">🔒 Enter the code <span class="emoji-4d">🤔</span></p>
+    <div>
+      <span class="pass-box" id="box1"></span>
+      <span class="pass-box" id="box2"></span>
+      <span class="pass-box" id="box3"></span>
+      <span class="pass-box" id="box4"></span>
+    </div>
+    <div class="lock-status" id="lockStatus"></div>
+    <div class="numpad">
+      <button class="num-key" onclick="pressKey('1')">1</button>
+      <button class="num-key" onclick="pressKey('2')">2</button>
+      <button class="num-key" onclick="pressKey('3')">3</button>
+      <button class="num-key" onclick="pressKey('4')">4</button>
+      <button class="num-key" onclick="pressKey('5')">5</button>
+      <button class="num-key" onclick="pressKey('6')">6</button>
+      <button class="num-key" onclick="pressKey('7')">7</button>
+      <button class="num-key" onclick="pressKey('8')">8</button>
+      <button class="num-key" onclick="pressKey('9')">9</button>
+      <button class="num-key num-key-clear" onclick="clearPass()">⌫</button>
+      <button class="num-key num-key-zero" onclick="pressKey('0')">0</button>
+    </div>
+    <div class="hint-link" onclick="showLetter()">Do you to take an idea?? <span class="emoji-4d">🤭</span></div>
+  </div>
+</div>
+
+<div id="letterPage" class="page">
+  <div class="content fade-in">
+    <div class="letter-box">
+      <div class="letter-text">
+        <span class="emoji-4d">📜</span> Someone's Birth Date buddhu <span class="emoji-4d">🥳</span><span class="emoji-4d">🎉</span>
+      </div>
+    </div>
+    <div style="margin-top:25px;">
+      <button class="btn btn-yes" onclick="showPage('lockPage')">Go back 🔙</button>
+    </div>
   </div>
 </div>
 
@@ -103,8 +144,8 @@ setTimeout(() => {
 function showMessage() {
   showPage('messagePage');
   setTimeout(() => {
-    showPage('mainPage');
-    startFallingItems('mainPage');
+    showPage('lockPage');
+    startFallingItems('lockPage');
   }, 5000);
 }
 
@@ -153,6 +194,36 @@ function goBackWithOnlyYes() {
   cameFromNotSorry = true;
   document.querySelector('#questionPage .btn-no').style.display = 'none';
   showPage('questionPage');
+}
+
+let passCode = '';
+const correctPass = '3007';
+
+function pressKey(key) {
+  if (passCode.length < 4) {
+    passCode += key;
+    document.getElementById('box' + (passCode.length)).textContent = key;
+    if (passCode.length === 4) {
+      if (passCode === correctPass) {
+        document.getElementById('lockStatus').textContent = '✅ Correct!';
+        setTimeout(() => showLetter(), 600);
+      } else {
+        document.getElementById('lockStatus').textContent = '❌ Wrong code!';
+        setTimeout(() => clearPass(), 800);
+      }
+    }
+  }
+}
+
+function clearPass() {
+  passCode = '';
+  for (let i = 1; i <= 4; i++) document.getElementById('box' + i).textContent = '';
+  document.getElementById('lockStatus').textContent = '';
+}
+
+function showLetter() {
+  clearPass();
+  showPage('letterPage');
 }
 
 function startFallingItems(containerId) {
