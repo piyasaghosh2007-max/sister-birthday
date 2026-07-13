@@ -51,6 +51,9 @@ p { font-size: 2em; color: #660033; margin-bottom: 15px; }
 .lock-status { font-family: 'Playfair Display', serif; font-size: 1em; color: #cc0066; margin-top: 10px; min-height: 30px; }
 .pics-box { display: inline-block; padding: 18px 50px; border: 2px solid #cc0066; border-radius: 16px; font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.5em; color: #cc0066; cursor: pointer; background: rgba(255,255,255,0.3); transition: all 0.3s; margin-top: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
 .pics-box:hover { background: #cc0066; color: #fff; box-shadow: 0 0 25px rgba(204,0,102,0.4); transform: scale(1.05); }
+.love-paper { background: linear-gradient(145deg, #fff0f5, #ffe4ec, #fff0f5); border: 2px solid rgba(204,0,102,0.2); border-radius: 20px; padding: 35px 40px; max-width: 650px; margin-top: 25px; position: relative; overflow: hidden; box-shadow: 0 8px 32px rgba(204,0,102,0.15), inset 0 1px 0 rgba(255,255,255,0.8); }
+.love-paper::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.4) 45%, rgba(255,255,255,0.6) 50%, rgba(255,255,255,0.4) 55%, transparent 60%); animation: gloss 4s ease-in-out infinite; pointer-events: none; }
+@keyframes gloss { 0% { transform: translateX(-100%) rotate(45deg); } 100% { transform: translateX(100%) rotate(45deg); } }
 </style>
 </head>
 <body>
@@ -130,13 +133,15 @@ p { font-size: 2em; color: #660033; margin-bottom: 15px; }
     <p style="font-size:1.3em;color:#660033;margin-top:25px;line-height:2;font-family:'Playfair Display',serif;font-style:italic;">
       Love you always Didi! ❤️
     </p>
-    <div style="font-size:1.3em;color:#1a0033;line-height:2.1;margin-top:25px;max-width:650px;font-family:'Playfair Display',serif;font-style:italic;text-shadow:0 1px 3px rgba(255,255,255,0.5),0 0 20px rgba(204,0,102,0.15);font-weight:500;">
-      I love you so much didi. There's no one who supports me like you do.<br>
-      You're always there when I need you, through every tough time.<br>
-      I don't say it enough, but you mean the world to me.<br>
-      Your love and care make everything better.<br>
-      I'm so grateful to have you in my life.<br>
-      Stay with me always, I love you more than words can say. 💕
+    <div class="love-paper">
+      <div style="font-size:1.2em;color:#1a0033;line-height:2.1;font-family:'Playfair Display',serif;font-style:italic;text-shadow:0 1px 2px rgba(255,255,255,0.4);font-weight:500;position:relative;z-index:1;">
+        I love you so much didi. There's no one who supports me like you do.<br>
+        You're always there when I need you, through every tough time.<br>
+        I don't say it enough, but you mean the world to me.<br>
+        Your love and care make everything better.<br>
+        I'm so grateful to have you in my life.<br>
+        Stay with me always, I love you more than words can say. 💕
+      </div>
     </div>
     <div class="pics-box" onclick="alert('Pictures coming soon! 📸')">Let's see ur pics 📸 <span class="emoji-4d">🥰</span></div>
   </div>
