@@ -54,6 +54,9 @@ p { font-size: 2em; color: #660033; margin-bottom: 15px; }
 .love-paper { background: linear-gradient(145deg, #fff0f5, #ffe4ec, #fff0f5); border: 2px solid rgba(204,0,102,0.2); border-radius: 20px; padding: 35px 40px; max-width: 650px; margin-top: 25px; position: relative; overflow: hidden; box-shadow: 0 8px 32px rgba(204,0,102,0.15), inset 0 1px 0 rgba(255,255,255,0.8); }
 .love-paper::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.4) 45%, rgba(255,255,255,0.6) 50%, rgba(255,255,255,0.4) 55%, transparent 60%); animation: gloss 4s ease-in-out infinite; pointer-events: none; }
 @keyframes gloss { 0% { transform: translateX(-100%) rotate(45deg); } 100% { transform: translateX(100%) rotate(45deg); } }
+.glossy-btn { display: inline-block; padding: 16px 45px; margin-top: 20px; border: 2px solid rgba(204,0,102,0.3); border-radius: 50px; background: linear-gradient(145deg, #ffb6d9, #ff8cbc, #ffb6d9); color: #fff; font-size: 1.3em; font-family: 'Playfair Display', serif; font-style: italic; font-weight: 700; cursor: pointer; position: relative; overflow: hidden; box-shadow: 0 4px 20px rgba(204,0,102,0.3); transition: all 0.3s; }
+.glossy-btn::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: linear-gradient(45deg, transparent 35%, rgba(255,255,255,0.5) 45%, rgba(255,255,255,0.7) 50%, rgba(255,255,255,0.5) 55%, transparent 65%); animation: gloss 3s ease-in-out infinite; pointer-events: none; }
+.glossy-btn:hover { transform: scale(1.05); box-shadow: 0 6px 30px rgba(204,0,102,0.5); }
 </style>
 </head>
 <body>
@@ -151,10 +154,8 @@ p { font-size: 2em; color: #660033; margin-bottom: 15px; }
   <div class="content fade-in">
     <img src="pic.png" alt="Special pic" style="max-width:90vw;max-height:65vh;border-radius:16px;box-shadow:0 8px 40px rgba(0,0,0,0.3);border:3px solid rgba(255,255,255,0.5);">
     <p style="font-size:1.8em;color:#660033;margin-top:12px;font-family:'Playfair Display',serif;font-style:italic;">you are looking so cute <span class="emoji-4d">🥰</span></p>
-    <p style="font-size:1.5em;color:#990055;margin-top:8px;font-family:'Playfair Display',serif;font-style:italic;">Now let's see the real pic and emotion <span class="emoji-4d">🥺</span><span class="emoji-4d">💕</span></p>
-    <div style="margin-top:20px;">
-      <button class="btn btn-yes" onclick="showPage('finalPage')">Go back 🔙</button>
-    </div>
+    <div class="glossy-btn" onclick="showPage('finalPage')">Now let's see the real pic and emotion <span class="emoji-4d">🥺</span><span class="emoji-4d">💕</span></div>
+  </div>
   </div>
 </div>
 
