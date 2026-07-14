@@ -58,7 +58,7 @@ p { font-size: 2em; color: #660033; margin-bottom: 15px; }
 .glossy-btn::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: linear-gradient(45deg, transparent 35%, rgba(255,255,255,0.5) 45%, rgba(255,255,255,0.7) 50%, rgba(255,255,255,0.5) 55%, transparent 65%); animation: gloss 3s ease-in-out infinite; pointer-events: none; }
 .glossy-btn:hover { transform: scale(1.05); box-shadow: 0 6px 30px rgba(204,0,102,0.5); }
 .white-glossy { font-family: 'Great Vibes', cursive; font-size: 4.5em; color: #fff; text-shadow: 0 0 15px rgba(255,255,255,0.4), 0 0 40px rgba(255,105,180,0.3), 0 0 80px rgba(255,105,180,0.15); animation: pulse 2s ease-in-out infinite; letter-spacing: 3px; margin-bottom: 5px; }
-.cal-section { padding: 20px 10px; margin-top: 15px; max-width: 400px; width: 100%; position: relative; animation: calFade 0.8s ease forwards; }
+.cal-section { padding: 20px 10px; margin-top: 30px; max-width: 400px; width: 100%; position: relative; animation: calFade 0.8s ease forwards; }
 @keyframes calFade { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 .cal-header { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
 .cal-butterfly { font-size: 1.8em; }
@@ -160,13 +160,12 @@ p { font-size: 2em; color: #660033; margin-bottom: 15px; }
 </div>
 
 <div id="finalPage" class="page" style="overflow-y:auto;background:#0d0d0d;">
-  <div class="content fade-in" style="max-width:750px;padding:30px 20px;">
+  <div class="content fade-in" style="max-width:750px;padding:60px 20px 30px;">
     <div class="white-glossy">🎂 Happy Birthday Tiyasa! 🎂</div>
     <p style="font-size:1.5em;color:rgba(255,255,255,0.85);margin-top:15px;line-height:2;font-family:'Playfair Display',serif;font-style:italic;">
       Love you always Didi! ❤️
     </p>
-    <div style="display:flex;flex-wrap:wrap;gap:30px;justify-content:center;align-items:flex-start;margin-top:25px;width:100%;">
-      <div class="cal-section" id="calendarSection" style="flex:0 0 auto;">
+    <div class="cal-section" id="calendarSection">
       <div class="cal-header">
         <span class="cal-butterfly">🦋</span>
         <div class="cal-month" id="calMonth">July</div>
@@ -177,9 +176,8 @@ p { font-size: 2em; color: #660033; margin-bottom: 15px; }
       </div>
       <div class="cal-grid" id="calGrid"></div>
     </div>
-      <div style="flex:1;min-width:280px;text-align:left;font-size:1.1em;color:rgba(255,255,255,0.85);line-height:2.2;font-family:'Playfair Display',serif;font-style:italic;text-shadow:0 0 20px rgba(255,255,255,0.05);font-weight:400;padding-top:10px;">
-        <span class="emoji-4d">💖</span> You're my everything, didi. I love you more than words can ever express. <span class="emoji-4d">💕</span>
-      </div>
+    <div style="text-align:center;font-size:1.2em;color:rgba(255,255,255,0.85);line-height:2;margin-top:20px;font-family:'Playfair Display',serif;font-style:italic;">
+      <span class="emoji-4d">💖</span> You're my everything, didi. I love you more than words can ever express. <span class="emoji-4d">💕</span>
     </div>
     <div class="pics-box" onclick="showPage('picsPage')">Let's see ur pics 📸 <span class="emoji-4d">🥰</span></div>
   </div>
