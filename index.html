@@ -410,26 +410,17 @@ window.addEventListener('load', () => {
 });
 
 function initCursorBubbles() {
-  const bubbleEmojis = ['💕', '✨', '🌸', '💖', '🦋', '⭐', '🌷'];
   document.addEventListener('mousemove', e => {
-    if (Math.random() > 0.4) return;
+    if (Math.random() > 0.35) return;
     const b = document.createElement('div');
-    b.textContent = bubbleEmojis[Math.floor(Math.random() * bubbleEmojis.length)];
-    b.style.position = 'fixed';
-    b.style.left = (e.clientX + (Math.random() - 0.5) * 20) + 'px';
-    b.style.top = e.clientY + 'px';
-    b.style.fontSize = (0.5 + Math.random() * 0.6) + 'em';
-    b.style.pointerEvents = 'none';
-    b.style.zIndex = '9999';
-    b.style.transition = 'all 1.2s ease-out';
-    b.style.opacity = '1';
-    b.style.transform = 'translateY(0) scale(0.5)';
+    const size = 4 + Math.random() * 10;
+    b.style.cssText = `position:fixed;left:${e.clientX + (Math.random() - 0.5) * 30}px;top:${e.clientY}px;width:${size}px;height:${size}px;border-radius:50%;background:radial-gradient(circle at 30% 30%, rgba(255,255,255,0.8), rgba(255,255,255,0.2));pointer-events:none;z-index:9999;opacity:0.7;box-shadow:0 0 ${size/2}px rgba(255,255,255,0.3);transition:all 1.5s ease-out;`;
     document.body.appendChild(b);
     requestAnimationFrame(() => {
-      b.style.transform = `translateY(-${40 + Math.random() * 60}px) scale(1.2)`;
+      b.style.transform = `translateY(-${30 + Math.random() * 80}px) translateX(${(Math.random() - 0.5) * 40}px)`;
       b.style.opacity = '0';
     });
-    setTimeout(() => b.remove(), 1300);
+    setTimeout(() => b.remove(), 1600);
   });
 }
 </script>
