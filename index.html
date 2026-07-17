@@ -22,16 +22,21 @@ p { font-size: 2em; color: #660033; margin-bottom: 15px; }
 .btn-sorry:hover { transform: scale(1.1); box-shadow: 0 0 25px rgba(255,105,180,0.6); }
 .btn-not-sorry { background: linear-gradient(45deg, #ff6b6b, #cc0000); color: #fff; }
 .btn-not-sorry:hover { transform: scale(1.1); box-shadow: 0 0 25px rgba(255,0,0,0.4); }
-.falling-item { position: fixed; top: -80px; animation: fall linear forwards; z-index: 0; font-size: 2.5em; pointer-events: none; filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.2)); transform: perspective(300px) rotateX(5deg); }
-@keyframes fall { 0% { transform: translateY(-80px) rotate(0deg) perspective(300px) rotateX(5deg); opacity: 1; } 100% { transform: translateY(110vh) rotate(720deg) perspective(300px) rotateX(5deg); opacity: 0.4; } }
+.falling-item { position: fixed; top: -80px; animation: fall linear forwards; z-index: 0; font-size: 2.5em; pointer-events: none; filter: drop-shadow(3px 3px 6px rgba(0,0,0,0.3)) brightness(1.1); transform: perspective(400px) rotateX(8deg) rotateY(5deg); }
+@keyframes fall { 0% { transform: translateY(-80px) rotate(0deg) perspective(400px) rotateX(8deg) rotateY(5deg); opacity: 0.9; } 100% { transform: translateY(110vh) rotate(720deg) perspective(400px) rotateX(8deg) rotateY(5deg); opacity: 0.3; } }
 .content { z-index: 1; position: relative; }
-.welcome-text { font-family: 'Great Vibes', cursive; font-size: 4.5em; background: linear-gradient(45deg, #ff1493, #ff69b4, #ff1493); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: none; animation: pulse 2s ease-in-out infinite; filter: drop-shadow(2px 2px 4px rgba(255,105,180,0.3)); }
+.welcome-text { font-family: 'Great Vibes', cursive; font-size: 5em; background: linear-gradient(135deg, #fff 0%, #ffb6e6 25%, #ff69b4 50%, #ffb6e6 75%, #fff 100%); background-size: 300% 300%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: none; animation: glossShift 3s ease-in-out infinite, pulse 2s ease-in-out infinite; filter: drop-shadow(0 0 15px rgba(255,105,180,0.4)) drop-shadow(0 0 40px rgba(255,105,180,0.2)); position: relative; letter-spacing: 4px; }
+@keyframes glossShift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+.welcome-text::after { content: '✨'; position: absolute; top: -15px; right: -30px; font-size: 0.4em; -webkit-text-fill-color: initial; animation: sparkleRotate 2s ease-in-out infinite; }
+.welcome-text::before { content: '✨'; position: absolute; bottom: -15px; left: -30px; font-size: 0.4em; -webkit-text-fill-color: initial; animation: sparkleRotate 2s ease-in-out infinite reverse; }
+@keyframes sparkleRotate { 0%,100% { transform: scale(1) rotate(0deg); opacity: 0.6; } 50% { transform: scale(1.3) rotate(180deg); opacity: 1; } }
 @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
 .fade-in { animation: fadeIn 0.5s ease forwards; }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-.loading-bar { width: 200px; height: 4px; background: rgba(255,105,180,0.3); border-radius: 4px; overflow: hidden; margin-top: 30px; }
-.loading-bar-inner { height: 100%; width: 0%; background: linear-gradient(90deg, #ff69b4, #ff1493); border-radius: 4px; animation: load 4s linear forwards; }
+.loading-bar { width: 280px; height: 6px; background: rgba(255,255,255,0.15); border-radius: 10px; overflow: hidden; margin-top: 35px; box-shadow: inset 0 1px 3px rgba(0,0,0,0.2), 0 0 20px rgba(255,105,180,0.15); }
+.loading-bar-inner { height: 100%; width: 0%; background: linear-gradient(90deg, #ff69b4, #ff1493, #ff69b4); background-size: 200% 100%; border-radius: 10px; animation: load 4s linear forwards, glossBar 1.5s ease-in-out infinite; box-shadow: 0 0 15px rgba(255,105,180,0.5); }
 @keyframes load { to { width: 100%; } }
+@keyframes glossBar { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
 .main-content { max-width: 800px; padding: 40px; z-index: 1; position: relative; }
 .main-content h1 { font-family: 'Great Vibes', cursive; font-size: 3.8em; margin-bottom: 15px; color: #cc0055; }
 .main-content p { font-size: 1.6em; line-height: 1.9; color: #660044; font-family: 'Playfair Display', serif; }
@@ -90,7 +95,7 @@ p { font-size: 2em; color: #660033; margin-bottom: 15px; }
 </head>
 <body>
 
-<div id="welcomePage" class="page active">
+<div id="welcomePage" class="page active" style="background:radial-gradient(ellipse at center, #2a0044 0%, #0d001a 100%);">
   <div class="content fade-in">
     <div class="welcome-text"><span class="emoji-4d">🌷</span>💓Welcome Tiyasa<span class="emoji-4d">🌷</span>💗</div>
     <div class="loading-bar"><div class="loading-bar-inner"></div></div>
