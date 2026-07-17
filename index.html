@@ -385,7 +385,7 @@ function initSparkles() {
 initSparkles();
 
 function startFallingItems(containerId) {
-  const items = ['🎀', '🎀', '🌸', '🌸', '🌺', '💐', '🎈', '✨', '💖', '🌷'];
+  const items = ['🌸', '⭐', '🌷', '💖', '🎀', '✨', '💕', '🌺'];
   const container = document.getElementById(containerId);
   const interval = setInterval(() => {
     if (!document.getElementById(containerId).classList.contains('active')) {
@@ -406,7 +406,32 @@ function startFallingItems(containerId) {
 
 window.addEventListener('load', () => {
   startFallingItems('welcomePage');
+  initCursorBubbles();
 });
+
+function initCursorBubbles() {
+  const bubbleEmojis = ['💕', '✨', '🌸', '💖', '🦋', '⭐', '🌷'];
+  document.addEventListener('mousemove', e => {
+    if (Math.random() > 0.4) return;
+    const b = document.createElement('div');
+    b.textContent = bubbleEmojis[Math.floor(Math.random() * bubbleEmojis.length)];
+    b.style.position = 'fixed';
+    b.style.left = (e.clientX + (Math.random() - 0.5) * 20) + 'px';
+    b.style.top = e.clientY + 'px';
+    b.style.fontSize = (0.5 + Math.random() * 0.6) + 'em';
+    b.style.pointerEvents = 'none';
+    b.style.zIndex = '9999';
+    b.style.transition = 'all 1.2s ease-out';
+    b.style.opacity = '1';
+    b.style.transform = 'translateY(0) scale(0.5)';
+    document.body.appendChild(b);
+    requestAnimationFrame(() => {
+      b.style.transform = `translateY(-${40 + Math.random() * 60}px) scale(1.2)`;
+      b.style.opacity = '0';
+    });
+    setTimeout(() => b.remove(), 1300);
+  });
+}
 </script>
 </body>
 </html>
