@@ -410,19 +410,18 @@ window.addEventListener('load', () => {
 });
 
 function initCursorBubbles() {
-  const bubbleEmojis = ['💕', '✨', '🌸', '💖', '🦋', '⭐', '🌷'];
   document.addEventListener('mousemove', e => {
     const count = 2 + Math.floor(Math.random() * 3);
     for (let i = 0; i < count; i++) {
       const b = document.createElement('div');
-      b.textContent = bubbleEmojis[Math.floor(Math.random() * bubbleEmojis.length)];
-      b.style.cssText = `position:fixed;left:${e.clientX + (Math.random() - 0.5) * 40}px;top:${e.clientY + (Math.random() - 0.5) * 20}px;font-size:${0.6 + Math.random() * 0.8}em;pointer-events:none;z-index:9999;opacity:0.9;transition:all 1.2s ease-out;transform:scale(0.3);filter:drop-shadow(0 0 4px rgba(255,105,180,0.3));`;
+      const size = 3 + Math.random() * 8;
+      b.style.cssText = `position:fixed;left:${e.clientX + (Math.random() - 0.5) * 40}px;top:${e.clientY + (Math.random() - 0.5) * 15}px;width:${size}px;height:${size}px;border-radius:50%;background:radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9), rgba(255,255,255,0.15));pointer-events:none;z-index:9999;opacity:0.8;box-shadow:0 0 ${size}px rgba(255,255,255,0.3);transition:all 1.5s ease-out;`;
       document.body.appendChild(b);
       requestAnimationFrame(() => {
-        b.style.transform = `translateY(-${30 + Math.random() * 70}px) translateX(${(Math.random() - 0.5) * 50}px) scale(1.2)`;
+        b.style.transform = `translateY(-${20 + Math.random() * 60}px) translateX(${(Math.random() - 0.5) * 30}px)`;
         b.style.opacity = '0';
       });
-      setTimeout(() => b.remove(), 1300);
+      setTimeout(() => b.remove(), 1600);
     }
   });
 }
